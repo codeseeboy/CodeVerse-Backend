@@ -6,15 +6,21 @@ import shutil
 IS_WINDOWS = os.name == 'nt'
 
 LANG_CONFIG = {
-    'python': {
-        'ext': '.py',
-        'cmd': lambda filename: ['python', filename],
-        'check': lambda: shutil.which('python')
+    'c': {
+        'ext': '.c',
+        'cmd': lambda filename: (
+            ['cmd', '/c', f"gcc {filename} -o {filename}.exe && {filename}.exe"] if IS_WINDOWS else
+            ['sh', '-c', f"gcc {filename} -o {filename}.out && {filename}.out"]
+        ),
+        'check': lambda: shutil.which('gcc')
     },
-    'javascript': {
-        'ext': '.js',
-        'cmd': lambda filename: ['node', filename],
-        'check': lambda: shutil.which('node')
+    'cpp': {
+        'ext': '.cpp',
+        'cmd': lambda filename: (
+            ['cmd', '/c', f"g++ {filename} -o {filename}.exe && {filename}.exe"] if IS_WINDOWS else
+            ['sh', '-c', f"g++ {filename} -o {filename}.out && {filename}.out"]
+        ),
+        'check': lambda: shutil.which('g++')
     },
     'java': {
         'ext': '.java',
@@ -24,6 +30,16 @@ LANG_CONFIG = {
         ),
         'check': lambda: shutil.which('javac') and shutil.which('java')
     },
+    'python': {
+        'ext': '.py',
+        'cmd': lambda filename: ['python', filename],
+        'check': lambda: shutil.which('python')
+    },
+    'javascript': {
+        'ext': '.js',
+        'cmd': lambda filename: ['node', filename],
+        'check': lambda: shutil.which('node')
+    }
 }
 
 def get_available_languages():

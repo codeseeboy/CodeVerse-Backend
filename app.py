@@ -13,11 +13,16 @@ CORS(app, resources={
             "http://127.0.0.1:5173",
             "http://localhost:3000",
             "http://127.0.0.1:3000",
-            "https://editie.vercel.app",  # Production frontend URL
-            "https://*.vercel.app"  # Allow all subdomains of vercel.app
+            "https://editie.vercel.app",
+            "https://*.vercel.app",
+            "https://editie.netlify.app",  # Netlify domain
+            "https://*.netlify.app"  # Allow all Netlify subdomains
         ],
         "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type"]
+        "allow_headers": ["Content-Type", "Accept", "Origin", "Authorization"],
+        "expose_headers": ["Content-Type", "X-CSRFToken"],
+        "supports_credentials": True,
+        "max_age": 600
     }
 })
 
