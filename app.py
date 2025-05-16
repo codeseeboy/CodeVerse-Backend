@@ -8,7 +8,14 @@ app = Flask(__name__)
 # Configure CORS with specific settings
 CORS(app, resources={
     r"/*": {
-        "origins": ["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:3000", "http://127.0.0.1:3000"],
+        "origins": [
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+            "https://editie.vercel.app",  # Production frontend URL
+            "https://*.vercel.app"  # Allow all subdomains of vercel.app
+        ],
         "methods": ["GET", "POST", "OPTIONS"],
         "allow_headers": ["Content-Type"]
     }
