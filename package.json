@@ -1,0 +1,14 @@
+{
+  "name": "code-editor-backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "python app.py",
+    "start": "python server.py"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+  }
+} 
