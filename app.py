@@ -9,14 +9,18 @@ app = Flask(__name__)
 CORS(app, resources={
     r"/*": {
         "origins": [
-            "http://localhost:5173",
+           "http://localhost:5173",
             "http://127.0.0.1:5173",
             "http://localhost:3000",
             "http://127.0.0.1:3000",
+            "http://localhost:3001",
+            "http://127.0.0.1:3001",
+            "http://localhost:5000",
+            "http://127.0.0.1:5000",
             "https://editie.vercel.app",
             "https://*.vercel.app",
-            "https://editie.netlify.app",  # Netlify domain
-            "https://*.netlify.app"  # Allow all Netlify subdomains
+            "https://editie.netlify.app",
+            "https://*.netlify.app"
         ],
         "methods": ["GET", "POST", "OPTIONS"],
         "allow_headers": ["Content-Type", "Accept", "Origin", "Authorization"],
